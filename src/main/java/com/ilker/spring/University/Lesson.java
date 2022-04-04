@@ -2,9 +2,10 @@ package com.ilker.spring.University;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.ilker.spring.JsonMappings.LessonDeserializer;
-import org.json.JSONObject;
+import com.ilker.spring.Teacher.Teacher;
 
 import java.util.Date;
+import java.util.List;
 
 @JsonDeserialize(using = LessonDeserializer.class)
 public class Lesson {
@@ -13,7 +14,7 @@ public class Lesson {
     private String lessonName;
     private Date year;
     private String term;
-    private JSONObject teachers;
+    private List<Teacher> teachers;
 
     public Lesson() {
     }
@@ -55,11 +56,11 @@ public class Lesson {
         this.term = term;
     }
 
-    public JSONObject getTeachers() {
+    public List<Teacher> getTeachers() {
         return teachers;
     }
 
-    public void setTeachers(JSONObject teachers) {
+    public void setTeachers(List<Teacher> teachers) {
         this.teachers = teachers;
     }
 
