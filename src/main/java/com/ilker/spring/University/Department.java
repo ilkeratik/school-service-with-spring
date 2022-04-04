@@ -1,20 +1,34 @@
 package com.ilker.spring.University;
 
-public class Department {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-    private Integer id;
+@Entity
+@Table(name="department_jpa")
+public class Department {
+    @Id
+    private String id;
     private String name;
 
-    public Department(Integer id, String name) {
+    public Department() {
+
+    }
+
+    public Department(String id) {
+        this.id = id;
+    }
+
+    public Department(String id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

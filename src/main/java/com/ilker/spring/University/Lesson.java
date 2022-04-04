@@ -1,9 +1,12 @@
 package com.ilker.spring.University;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.ilker.spring.JsonMappings.LessonDeserializer;
 import org.json.JSONObject;
 
 import java.util.Date;
 
+@JsonDeserialize(using = LessonDeserializer.class)
 public class Lesson {
 
     private String lessonId;

@@ -3,59 +3,74 @@ package com.ilker.spring.Student;
 import com.ilker.spring.University.Department;
 import com.ilker.spring.University.Faculty;
 import com.ilker.spring.University.Lesson;
+import com.vladmihalcea.hibernate.type.json.JsonStringType;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "student_jpa")
+@TypeDef(name = "json", typeClass = JsonStringType.class)
 public class Student {
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long idStudent;
 
-    private Long id;
-    private Integer studentId;
+    private Integer studentNumber;
     private String name;
-    private String surName;
+    private String surname;
     private Integer grade;
+    @Type( type = "json" )
+    @Column( columnDefinition = "json" )
     private List<Lesson> lessons;
-    private Faculty faculty;
-    private Department department;
+    private String facultyId;
+    private String departmentId;
 
+    @Transient
+    private Faculty faculty;
+    @Transient
+    private Department department;
 
     public Student() {
     }
 
-    public Student(Long id, Integer studentId, String name, String surName, Integer grade, List<Lesson> lesson, Faculty faculty, Department department) {
-        this.id = id;
-        this.studentId = studentId;
+    public Student(Long idStudent, Integer studentNumber, String name, String surname, Integer grade, List<Lesson> lessons, String facultyId, String departmentId) {
+        this.idStudent = idStudent;
+        this.studentNumber = studentNumber;
         this.name = name;
-        this.surName = surName;
+        this.surname = surname;
         this.grade = grade;
-        this.lessons = lesson;
-        this.faculty = faculty;
-        this.department = department;
+        this.lessons = lessons;
+        this.facultyId = facultyId;
+        this.departmentId = departmentId;
     }
 
-    public Student(Integer studentId, String name, String surName, Integer grade, List<Lesson> lesson, Faculty faculty, Department department) {
-        this.studentId = studentId;
+    public Student(Integer studentNumber, String name, String surname, Integer grade, List<Lesson> lessons, String facultyId, String departmentId) {
+        this.studentNumber = studentNumber;
         this.name = name;
-        this.surName = surName;
+        this.surname = surname;
         this.grade = grade;
-        this.lessons = lesson;
-        this.faculty = faculty;
-        this.department = department;
+        this.lessons = lessons;
+        this.facultyId = facultyId;
+        this.departmentId = departmentId;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdStudent() {
+        return idStudent;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdStudent(Long idStudent) {
+        this.idStudent = idStudent;
     }
 
-    public Integer getStudentId() {
-        return studentId;
+    public Integer getStudentNumber() {
+        return studentNumber;
     }
 
-    public void setStudentId(Integer studentId) {
-        this.studentId = studentId;
+    public void setStudentNumber(Integer studentNumber) {
+        this.studentNumber = studentNumber;
     }
 
     public String getName() {
@@ -66,12 +81,12 @@ public class Student {
         this.name = name;
     }
 
-    public String getSurName() {
-        return surName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setSurName(String surName) {
-        this.surName = surName;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public Integer getGrade() {
@@ -82,41 +97,42 @@ public class Student {
         this.grade = grade;
     }
 
-    public List<Lesson> getLesson() {
+    public List<Lesson> getLessons() {
         return lessons;
     }
 
-    public void setLesson(List<Lesson> lesson) {
-        this.lessons = lesson;
+    public void setLessons(List<Lesson> lessons) {
+        this.lessons = lessons;
     }
 
-    public Faculty getFaculty() {
-        return faculty;
+    public String getfacultyId() {return facultyId;}
+
+    public void setfacultyId(String facultyId) {
+        this.facultyId = facultyId;
     }
 
-    public void setFaculty(Faculty faculty) {
-        this.faculty = faculty;
+    public String getdepartmentId() {
+        return departmentId;
     }
 
-    public Department getDepartment() {
-        return department;
+    public void setdepartmentId(String departmentId) {
+        this.departmentId = departmentId;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
+    public String getDepartmentName(){
+        return new Department(this.departmentId).getName(); // TO-DO: Add Service instead.
     }
-
     @Override
     public String toString() {
         return "Student{" +
-                "id=" + id +
-                ", studentId=" + studentId +
+                "id=" + idStudent +
+                ", studentNumber=" + studentNumber +
                 ", name='" + name + '\'' +
-                ", surName='" + surName + '\'' +
+                ", surname='" + surname + '\'' +
                 ", grade=" + grade +
-                ", lesson=" + lessons +
-                ", faculty=" + faculty +
-                ", department=" + department +
+                ", lessons=" + lessons +
+                ", facultyId=" + facultyId +
+                ", departmentId=" + departmentId +
                 '}';
     }
 }
