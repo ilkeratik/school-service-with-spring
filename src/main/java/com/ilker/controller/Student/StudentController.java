@@ -1,10 +1,10 @@
-package com.ilker.spring.Student;
+package com.ilker.controller.Student;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.ilker.spring.University.Department;
-import com.ilker.spring.University.Faculty;
-import com.ilker.spring.University.Lesson;
+import com.ilker.model.Student.Student;
+import com.ilker.service.Student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public class StudentController {
     public StudentController(StudentService studentService){
         this.studentService= studentService;
     }
-    @GetMapping
+    @GetMapping()
     public List<Student> getStudents(){
         return studentService.getStudents();
     }

@@ -1,7 +1,9 @@
-package com.ilker.spring.Student;
+package com.ilker.service.Student;
 
 
-import com.ilker.spring.University.Lesson;
+import com.ilker.model.Student.Student;
+import com.ilker.model.University.Lesson;
+import com.ilker.repository.Student.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +26,7 @@ public class StudentService {
 
     public List<Student> getExampleStudent(){
         return List.of(
-                new Student(1L,180290050,"Ilker","Atik",4,
+                new Student(180290050,"Ilker","Atik",4,
                         List.of(new Lesson("YMU101","Yazilim Giris"),
                                 new Lesson("ATA101","Ataturk Ilkeleri")),
                         "290","290")

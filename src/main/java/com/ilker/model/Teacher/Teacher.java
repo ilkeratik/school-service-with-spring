@@ -1,8 +1,8 @@
-package com.ilker.spring.Teacher;
+package com.ilker.model.Teacher;
 
-import com.ilker.spring.University.Department;
-import com.ilker.spring.University.Faculty;
-import com.ilker.spring.University.Lesson;
+import com.ilker.model.University.Department;
+import com.ilker.model.University.Faculty;
+import com.ilker.model.University.Lesson;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.ilker.spring.University;
+package com.ilker.model.University;
 
 public class Faculty {
 

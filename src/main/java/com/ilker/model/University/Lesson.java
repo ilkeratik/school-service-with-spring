@@ -1,8 +1,8 @@
-package com.ilker.spring.University;
+package com.ilker.model.University;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.ilker.spring.JsonMappings.LessonDeserializer;
-import com.ilker.spring.Teacher.Teacher;
+import com.ilker.model.Teacher.Teacher;
+import com.ilker.jsonMapping.LessonDeserializer;
 
 import java.util.Date;
 import java.util.List;

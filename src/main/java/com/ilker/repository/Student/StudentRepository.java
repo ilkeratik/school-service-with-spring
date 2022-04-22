@@ -1,5 +1,6 @@
-package com.ilker.spring.Student;
+package com.ilker.repository.Student;
 
+import com.ilker.model.Student.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Details</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        table {
+            empty-cells: show;
+            margin: 20px auto;
+        }
+
+        table,
+        td,
+        th {
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: solid 1px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div >
+        <table style="border : 1px;">
+            <tr>
+                <td>Id</td>
+                <td>Number</td>
+                <td>Name</td>
+                <td>Surname</td>
+                <td>Grade</td>
+                <td colspan="2">Lessons</td>
+            </tr>
+
+            <tr  th:each="student : ${students}">
+                <th  th:text="${student.idStudent}"></th>
+                <th  th:text="${student.studentNumber}"></th>
+                <th  th:text="${student.name}"></th>
+                <th  th:text="${student.surname}"></th>
+                <th  th:text="${student.grade}"></th>
+                <td>
+                    <ul>
+                        <li th:each="lesson : ${student.lessons}">
+                            <span th:text="${lesson.lessonId}">d</span>
+                            <span th:text="${lesson.lessonName}">s</span>
+                        </li>
+                    </ul>
+                </td>
+
+            </tr >
+        </table>
+
+    </div>
+</body>
+</html>

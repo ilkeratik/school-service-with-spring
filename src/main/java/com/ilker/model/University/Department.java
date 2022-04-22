@@ -1,4 +1,4 @@
-package com.ilker.spring.University;
+package com.ilker.model.University;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

@@ -1,6 +1,8 @@
-package com.ilker.spring.Student;
+package com.ilker.config.Student;
 
-import com.ilker.spring.University.Lesson;
+import com.ilker.model.Student.Student;
+import com.ilker.model.University.Lesson;
+import com.ilker.repository.Student.StudentRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
