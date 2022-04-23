@@ -29,7 +29,12 @@ public class StudentController {
     }
 
     @DeleteMapping(path="{studentId}")
-    public void deleteStudent(@PathVariable("studentId") Long studentId){
+    public void deleteStudentById(@PathVariable("studentId") Long studentId){
         studentService.deleteStudent(studentId);
+    }
+
+    @DeleteMapping(path="/number/{studentNumber}")
+    public void deleteStudentByNumber(@PathVariable("studentNumber") Integer studentNumber){
+        studentService.deleteStudentByNumber(studentNumber);
     }
 }

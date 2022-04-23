@@ -34,8 +34,8 @@ public class StudentService {
     }
 
     public void addNewStudent(Student student) {
-        Optional<Student> studentById = studentRepository.findStudentById(student.getIdStudent());
-        if(studentById.isPresent()){
+        Optional<Student> studentByNumber = studentRepository.findStudentByNumber(student.getStudentNumber());
+        if(studentByNumber.isPresent()){
             throw new IllegalStateException(
                     "There is already a Student with the given id!");
         }
@@ -51,6 +51,15 @@ public class StudentService {
                     "student with id="+ studentId+ " does not exist!");
         }
         studentRepository.deleteById(studentId);
+    }
+
+    public void deleteStudentByNumber(Integer studentNumber) {
+        boolean exist =studentRepository.existsStudentByStudentNumber(studentNumber);
+        if(!exist){
+            throw new IllegalStateException(
+                    "student with number="+ studentNumber+ " does not exist!");
+        }
+        studentRepository.deleteStudentByNumber(studentNumber);
     }
 }
 

@@ -15,7 +15,9 @@
         th {
             border-collapse: collapse;
         }
-
+        tr:nth-child(odd) {
+            background: #eee;
+        }
         th,
         td {
             padding: 10px;
@@ -25,24 +27,23 @@
     </style>
 </head>
 <body>
-
     <div >
         <table style="border : 1px;">
             <tr>
-                <td>Id</td>
-                <td>Number</td>
-                <td>Name</td>
-                <td>Surname</td>
-                <td>Grade</td>
-                <td colspan="2">Lessons</td>
+                <th>Id</th>
+                <th>Number</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Grade</th>
+                <th colspan="2">Lessons</th>
             </tr>
 
             <tr  th:each="student : ${students}">
-                <th  th:text="${student.idStudent}"></th>
-                <th  th:text="${student.studentNumber}"></th>
-                <th  th:text="${student.name}"></th>
-                <th  th:text="${student.surname}"></th>
-                <th  th:text="${student.grade}"></th>
+                <td  th:text="${student.idStudent}"></td>
+                <td  th:text="${student.studentNumber}"></td>
+                <td  th:text="${student.name}"></td>
+                <td  th:text="${student.surname}"></td>
+                <td  th:text="${student.grade}"></td>
                 <td>
                     <ul>
                         <li th:each="lesson : ${student.lessons}">
@@ -51,10 +52,8 @@
                         </li>
                     </ul>
                 </td>
-
             </tr >
         </table>
-
     </div>
 </body>
 </html>
