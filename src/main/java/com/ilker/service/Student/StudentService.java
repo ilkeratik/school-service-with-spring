@@ -6,6 +6,9 @@ import com.ilker.model.University.Lesson;
 import com.ilker.repository.Student.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -60,6 +63,14 @@ public class StudentService {
                     "student with number="+ studentNumber+ " does not exist!");
         }
         studentRepository.deleteStudentByNumber(studentNumber);
+    }
+
+    @Transactional
+    public void updateStudent(Long studentId, Optional<String> name, Optional<String> surname){
+        Student student = studentRepository.findStudentById(studentId).orElseThrow(()->
+                new IllegalStateException("Student does not exist"));
+        name.ifPresent(student::setName);
+        surname.ifPresent(student::setSurname);
     }
 }
 
