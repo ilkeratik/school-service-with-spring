@@ -5,6 +5,7 @@ import com.ilker.model.University.Department;
 import com.ilker.model.University.Faculty;
 import com.ilker.model.University.Lesson;
 import com.vladmihalcea.hibernate.type.json.JsonStringType;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
@@ -16,12 +17,14 @@ import java.util.List;
 @RequiredArgsConstructor
 @NoArgsConstructor
 @Entity
-//@Table(name = "student_jpa")
+@Table(name = "students")
 @TypeDef(name = "json", typeClass = JsonStringType.class)
 public class Student {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long idStudent;
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    @Column(name = "idStudent", nullable = false)
+    private String idStudent;
 
     @NonNull private Integer studentNumber;
     @NonNull private String name;

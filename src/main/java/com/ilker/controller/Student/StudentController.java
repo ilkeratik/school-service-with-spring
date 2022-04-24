@@ -12,11 +12,11 @@ import java.util.Optional;
 @RequestMapping("api/v1/student")
 public class StudentController {
     private StudentService studentService;
-
     @Autowired
     public StudentController(StudentService studentService){
         this.studentService= studentService;
     }
+
     @GetMapping()
     public List<Student> getStudents(){
         return studentService.getStudents();
@@ -28,7 +28,7 @@ public class StudentController {
     }
 
     @DeleteMapping(path="{studentId}")
-    public void deleteStudentById(@PathVariable("studentId") Long studentId){
+    public void deleteStudentById(@PathVariable("studentId") String studentId){
         studentService.deleteStudent(studentId);
     }
 
@@ -36,10 +36,9 @@ public class StudentController {
     public void deleteStudentByNumber(@PathVariable("studentNumber") Integer studentNumber){
         studentService.deleteStudentByNumber(studentNumber);
     }
-
     @PutMapping(path="{studentId}")
     public void updateStudent(
-            @PathVariable("studentId") Long studentId,
+            @PathVariable("studentId") String studentId,
             @RequestParam(required = false) Optional<String> name,
             @RequestParam(required = false) Optional<String> surname
             ){

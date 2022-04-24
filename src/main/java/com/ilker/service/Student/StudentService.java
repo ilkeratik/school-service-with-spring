@@ -47,7 +47,7 @@ public class StudentService {
         System.out.println(student);
     }
 
-    public void deleteStudent(Long studentId) {
+    public void deleteStudent(String studentId) {
         boolean exist =studentRepository.existsById(studentId);
         if(!exist){
             throw new IllegalStateException(
@@ -66,7 +66,7 @@ public class StudentService {
     }
 
     @Transactional
-    public void updateStudent(Long studentId, Optional<String> name, Optional<String> surname){
+    public void updateStudent(String studentId, Optional<String> name, Optional<String> surname){
         Student student = studentRepository.findStudentById(studentId).orElseThrow(()->
                 new IllegalStateException("Student does not exist"));
         name.ifPresent(student::setName);

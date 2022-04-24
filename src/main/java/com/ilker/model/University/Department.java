@@ -1,50 +1,19 @@
 package com.ilker.model.University;
 
+import lombok.*;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name="department_jpa")
+@Table(name="departments")
 public class Department {
     @Id
-    private String id;
-    private String name;
+    @NonNull private String departmentId;
+    @NonNull private String departmentName;
 
-    public Department() {
-
-    }
-
-    public Department(String id) {
-        this.id = id;
-    }
-
-    public Department(String id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Department{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }
